@@ -41,6 +41,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
+# Inherit some common PixelExperience stuff
+TARGET_DISABLE_EPPE := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_GAPPS_ARCH := arm64
+TARGET_FACE_UNLOCK_SUPPORTED := true
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
 $(call inherit-product, device/google/sunfish/device-sunfish.mk)
 $(call inherit-product-if-exists, vendor/google_devices/sunfish/proprietary/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/google_devices/sunfish/prebuilts/device-vendor-sunfish.mk)
@@ -60,8 +67,18 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 # b/189477034: Bypass build time check on uses_libs until vendor fixes all their apps
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
+include device/google/sunfish/device-lineage.mk
+
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := google
 PRODUCT_NAME := aosp_sunfish
 PRODUCT_DEVICE := sunfish
 PRODUCT_MODEL := AOSP on sunfish
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_PRODUCT=sunfish \
+    PRIVATE_BUILD_DESC="sunfish-user 13 TP1A.221105.002 9080065 release-keys"
+
+BUILD_FINGERPRINT := google/sunfish/sunfish:13/TP1A.221105.002/9080065:user/release-keys
+
+$(call inherit-product, vendor/google/sunfish/sunfish-vendor.mk)

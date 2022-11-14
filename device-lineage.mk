@@ -32,10 +32,6 @@ PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
 PRODUCT_PACKAGES += \
     HbmSVManagerOverlay
 
-# Parts
-PRODUCT_PACKAGES += \
-    GoogleParts
-
 # RCS
 PRODUCT_PACKAGES += \
     PresencePolling \

@@ -77,8 +77,8 @@ PRODUCT_MODEL := AOSP on sunfish
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=sunfish \
-    PRIVATE_BUILD_DESC="sunfish-user 13 TP1A.221105.002 9080065 release-keys"
+    PRIVATE_BUILD_DESC="sunfish-user 13 TQ1A.221205.011 9244662 release-keys"
 
-BUILD_FINGERPRINT := google/sunfish/sunfish:13/TP1A.221105.002/9080065:user/release-keys
+BUILD_FINGERPRINT := google/sunfish/sunfish:13/TQ1A.221205.011/9244662:user/release-keys
 
 $(call inherit-product, vendor/google/sunfish/sunfish-vendor.mk)
